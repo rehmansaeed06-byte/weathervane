@@ -86,10 +86,15 @@
     return typeof value === 'number' && !Number.isNaN(value);
   }
 
+  // The whole-degree number the person sees on screen. The forecast bars use
+  // this too, so a bar always lines up with the label written next to it.
+  function shownTemp(celsius, unit) {
+    return Math.round(unit === 'f' ? toFahrenheit(celsius) : celsius);
+  }
+
   function formatTemp(celsius, unit) {
     if (!isNumber(celsius)) return '\u2014';
-    const value = unit === 'f' ? toFahrenheit(celsius) : celsius;
-    return Math.round(value) + '\u00b0';
+    return shownTemp(celsius, unit) + '\u00b0';
   }
 
   function formatWind(kmh, unit) {
@@ -229,6 +234,7 @@
     CONDITIONS: CONDITIONS,
     describeWeather: describeWeather,
     toFahrenheit: toFahrenheit,
+    shownTemp: shownTemp,
     formatTemp: formatTemp,
     formatWind: formatWind,
     formatPrecip: formatPrecip,

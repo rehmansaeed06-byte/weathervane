@@ -111,7 +111,12 @@
     const bar = makeSpan('bar');
     bar.setAttribute('aria-hidden', 'true');
     const fill = makeSpan('bar-fill');
-    const position = W.rangeBar(day.minC, day.maxC, weekMin, weekMax);
+    const position = W.rangeBar(
+      W.shownTemp(day.minC, state.unit),
+      W.shownTemp(day.maxC, state.unit),
+      weekMin,
+      weekMax
+    );
     fill.style.left = position.left + '%';
     fill.style.width = position.width + '%';
     bar.appendChild(fill);
@@ -150,8 +155,8 @@
     humidityEl.textContent = typeof current.humidity === 'number' ? current.humidity + '%' : '\u2014';
     windEl.textContent = W.formatWind(current.windKmh, state.unit);
 
-    const weekMin = Math.min.apply(null, days.map((d) => d.minC));
-    const weekMax = Math.max.apply(null, days.map((d) => d.maxC));
+    const weekMin = Math.min.apply(null, days.map((d) => W.shownTemp(d.minC, state.unit)));
+    const weekMax = Math.max.apply(null, days.map((d) => W.shownTemp(d.maxC, state.unit)));
     forecastList.replaceChildren.apply(
       forecastList,
       days.map((day, index) => buildDayRow(day, index, weekMin, weekMax))

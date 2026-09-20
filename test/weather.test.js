@@ -1,4 +1,13 @@
-
+/*
+ * Basic unit tests for weather.js
+ *
+ * How to read a test:
+ *   test('what should happen', () => {
+ *     assert.equal(what the code gives us, what we expect);
+ *   });
+ *
+ * If the two values are different, the test fails and CI turns red.
+ */
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const W = require('../weather.js');
@@ -19,6 +28,11 @@ test('formatTemp rounds 24.4 down to 24', () => {
 
 test('formatTemp rounds 24.6 up to 25', () => {
   assert.equal(W.formatTemp(24.6, 'c'), '25\u00b0');
+});
+
+test('shownTemp gives the same whole number that formatTemp shows', () => {
+  assert.equal(W.shownTemp(24.6, 'c'), 25);
+  assert.equal(W.shownTemp(0, 'f'), 32);
 });
 
 test('formatTemp shows Fahrenheit when the unit is f', () => {
@@ -92,6 +106,7 @@ test('placeDetail joins the region and country', () => {
 
 // ---- Forecast ---------------------------------------------------------
 
+// A small fake answer from the weather API, used by the tests below.
 function sampleForecast() {
   return {
     current: {
