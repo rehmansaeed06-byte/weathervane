@@ -1,0 +1,15 @@
+{
+  "name": "weathervane",
+  "version": "1.0.0",
+  "description": "A small weather app: search a city for current conditions and a 5-day forecast.",
+  "private": true,
+  "scripts": {
+    "check:syntax": "node --check weather.js && node --check script.js",
+    "check:build": "node scripts/check-build.js",
+    "test": "node --test",
+    "verify": "npm run check:syntax && npm run check:build && npm test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
