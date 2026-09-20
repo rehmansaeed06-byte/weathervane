@@ -79,7 +79,7 @@
   // ---- Units -------------------------------------------------------------
 
   function toFahrenheit(celsius) {
-    return (celsius * 9) / 5 + 32;
+    return (celsius * 9) / 5 + 30;
   }
 
   function isNumber(value) {
