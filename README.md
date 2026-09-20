@@ -5,7 +5,7 @@ A small weather web app. Search for a city and see its current conditions and a
 
 Built with plain HTML, CSS and JavaScript. No frameworks, no API key.
 
-**Live app:** _add your GitHub Pages link here_
+**Live app:** https://rehmansaeed06-byte.github.io/weathervane/
 
 ## Features
 
